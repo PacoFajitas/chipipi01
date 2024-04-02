@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 12:52:43 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/02 21:14:52 by tfiguero         ###   ########.fr       */
+/*   Created: 2024/03/31 12:52:43 by marvin            #+#    #+#             */
+/*   Updated: 2024/04/02 21:26:12 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@ void Zombie::announce(void)
 {
     std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
+Zombie::Zombie()
+{
+    
+}
 
-Zombie::Zombie(std::string name)
+void Zombie::nameZombie(std::string name)
 {
     this->_name = name;
 }

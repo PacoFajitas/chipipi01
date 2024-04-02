@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 12:52:43 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/02 21:14:52 by tfiguero         ###   ########.fr       */
+/*   Created: 2024/04/02 21:16:26 by tfiguero          #+#    #+#             */
+/*   Updated: 2024/04/02 21:29:40 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void Zombie::announce(void)
+Zombie	*zombieHorde(int N, std::string name )
 {
-    std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-Zombie::Zombie(std::string name)
-{
-    this->_name = name;
-}
-
-Zombie::~Zombie()
-{
-    std::cout << this->_name << " is dead" << std::endl;
+	if (N <= 0)
+	{
+		std::cout << "Invalid number of zombies" << std::endl;
+		return (NULL);
+	}
+	if (name.empty())
+	{
+		std::cout << "Invalid name" << std::endl;
+		return (NULL);
+	}
+	Zombie	*horde = new Zombie[N];
+	for(int i = 0; i < N; i++)
+	{
+		horde[i].nameZombie(name);
+		horde[i].announce();
+	}
+	return (horde);
 }

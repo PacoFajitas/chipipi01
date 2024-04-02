@@ -6,13 +6,16 @@
 #    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/24 16:37:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/02 21:13:38 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/04/02 21:54:27 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Braiiiiiiinnnzzz
+NAME = Violence
 
-SRC_FILES = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC_FILES = main.cpp \
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp
 
 OBJ_DIR = objs/
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
