@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42Barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:25:52 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/04 19:10:31 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:14:14 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,20 @@ void Harl::error(void)
 }
 void    Harl::complain(std::string level)
 {
-    if (level == "debug")
-        this->debug();
-    else if (level == "info")
-        this->info();
-    else if (level == "warning")
-        this->warning();
-    else if (level == "error")
-        this->error();
-    else
-        std::cout << "Invalid level of complaint." << std::endl;
+   int i;
+	std::string options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*funcArray[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+	i = 0;
+	while (i < 4)
+	{
+		if (options[i] == level)
+		{
+			(this->*funcArray[i])();
+			break ;
+		}
+		i++;
+	}
+    if (i == 4)
+        std::cout << "Invalid level" << std::endl;
 }
