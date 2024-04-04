@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 22:03:58 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/02 22:31:20 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:14:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,27 @@ void reemplazarPalabra(std::string &cadena, const std::string &palabraOriginal, 
 
 int main(int argc, char**argv) 
 {
-    if (argc == 4)
+    if (argc != 4)
     {
-        std::string file = argv[1];
-        std::ifstream f_in(file, std::ifstream::in);
-        std::ofstream f_out(file + ".replace", std::ofstream::out);
-        std::string linea;
-
-        if (!f_in || !f_out)
-            std::cout << "Error al abrir el archivo original o al crear el nuevo archivo";
-        while(std::getline(f_in, linea))
-        {
-            reemplazarPalabra(linea, argv[2], argv[3]);
-            f_out << linea << std::endl;
-        }
+        std::cout << "Por favor introduzca los siguientes argumentos: archivo a leer,";
+        std::cout << " string que sustituir, string por la que sustituirla" << std::endl;
+    return 0;
     }
-    else
-        std::cout << "Por favor introduzca los siguientes argumentos: archivo a leer, string que sustituir, string por la que sustituirla";
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+    std::string file = argv[1];
+    std::ifstream ifs;
+    ifs.open(file.c_str(), std::ios_base::in);
+    file += ".replace";
+    std::ofstream ofs;
+    ofs.open(file.c_str(), std::ios_base::out);
+    std::string linea;
+    if (!ifs.is_open() || !ofs.is_open())
+        std::cout << "Error al abrir el archivo original o al crear el nuevo archivo";
+    while(std::getline(ifs, linea))
+    {
+        reemplazarPalabra(linea, s1, s2);
+        ofs << linea << std::endl;
+    }
     return 0;
 }
